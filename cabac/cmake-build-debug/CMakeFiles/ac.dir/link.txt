@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/ac.dir/ac_en.c.o  -o ac 

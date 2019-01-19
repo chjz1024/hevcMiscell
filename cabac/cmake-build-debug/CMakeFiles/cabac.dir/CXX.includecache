@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/chjz/Desktop/hevcMiscell/cabac/CABACTables.h
+cstdint
+-
+
+/home/chjz/Desktop/hevcMiscell/cabac/ContextModel.h
+cstdint
+-
+CABACTables.h
+/home/chjz/Desktop/hevcMiscell/cabac/CABACTables.h
+
+/home/chjz/Desktop/hevcMiscell/cabac/encoderCABAC.h
+cstdint
+-
+fstream
+-
+ContextModel.h
+/home/chjz/Desktop/hevcMiscell/cabac/ContextModel.h
+
+/home/chjz/Desktop/hevcMiscell/cabac/main.cpp
+iostream
+-
+fstream
+-
+encoderCABAC.h
+/home/chjz/Desktop/hevcMiscell/cabac/encoderCABAC.h
+ctime
+-
+

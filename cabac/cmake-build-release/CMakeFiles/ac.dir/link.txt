@@ -1,0 +1,1 @@
+/usr/bin/cc -O3 -DNDEBUG   CMakeFiles/ac.dir/ac_en.c.o  -o ac 

@@ -3,6 +3,14 @@ from scipy.fftpack import dct, idct
 
 
 class MatTransform:
+    """
+    Basic transform matrix, including integer and floating-point implementation of 2D dct and dst.
+
+    Integer matrices are prefixed with '_', which can be called if the output is not desired.
+
+    The function only works on gray-scale pictures.
+    """
+
     def __init__(self, highPrec=False):
         if highPrec:
             self._dst4 = self._dst4matrix(7424, 14081, 18893, 21505)
@@ -140,15 +148,36 @@ class MatTransform:
 
     def dst2i(self, block: np.ndarray):
         if block.shape == (4, 4):
-            return self._dst4@block@self._dst4.T/128**2
+            return self._dst4 @ block @ self._dst4.T / 128 ** 2
         else:
             raise NotImplemented
 
     def idst2i(self, block: np.ndarray):
         if block.shape == (4, 4):
-            return self._dst4.T@block@self._dst4/128**2
+            return self._dst4.T @ block @ self._dst4 / 128 ** 2
         else:
             raise NotImplemented
+
+    def dct2i(self, block: np.ndarray):
+        x, y, *colour = block.shape
+        if x is y:
+            pass
+        else:
+            raise NotImplemented
+
+
+class CTB:
+    def __init__(self, length: int = 64):
+        pass
+
+
+def partition(block: np.ndarray, length: int = 64):
+    x, y = block.shape
+    num = int(np.log2(length))
+    part = np.zeros([x >> num, y >> num, length, length])
+    for i, j in np.ndindex(x >> num, y >> num):
+        part[i, j, :, :] = block[i << num:(i << num) + length, j << num:(j << num) + length]
+    return part
 
 
 transMat = MatTransform()
